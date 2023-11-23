@@ -38,6 +38,7 @@ This query outputs the average sedentary minutes per day for a specific user ID,
 
 #### 2nd Query (Intensity Distribution):
 
+```
 SELECT id,
        date,
        intensity,
@@ -49,6 +50,7 @@ FROM "fitness-data-kafka-database"."fitness_data_kafka_storage"
 WHERE intensity in (1,2,3)
 GROUP BY id,date,intensity
 ORDER BY id,date,intensity
+```
 
 <img src="Sql Analytics\Query_2\Output.jpg">
 
@@ -58,6 +60,7 @@ Grouping the data by intensity (Light, Moderate, Very Active), this query delves
 
 #### 3rd Query (Sleep Analysis):
 
+```
 SELECT id,
        date,
        sleep_value,
@@ -67,6 +70,7 @@ FROM "fitness-data-kafka-database"."fitness_data_kafka_storage"
 WHERE sleep_value != 0.0
 GROUP BY id,date,sleep_value
 ORDER BY id,date,sleep_value
+```
 
 <img src="Sql Analytics\Query_3\Output.jpg">
 
