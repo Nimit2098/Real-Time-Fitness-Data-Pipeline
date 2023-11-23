@@ -19,8 +19,10 @@ The data schema employed for fitness device information comprises ten key fields
 #### 0th Query (Table Preview):
 
 ```
+
 SELECT * 
 FROM "fitness-data-kafka-database"."fitness_data_kafka_storage" limit 10;
+
 ```
 
 <img src="Sql Analytics\Query_0\Output.jpg">
@@ -32,6 +34,7 @@ The result provides a preview of the database table structure created using the 
 #### 1st Query (Average Sedentary Minutes):
 
 ```
+
 WITH Intensity_per_minute AS (
     Select id,
            date,
@@ -47,6 +50,7 @@ SELECT id,
        round(Avg(Avg_heartrate),2) as Avg_heartrate_minute_day
 FROM Intensity_per_minute
 GROUP BY id
+
 ```
 
 <img src="Sql Analytics\Query_1\Output_cropped.jpg">
@@ -58,6 +62,7 @@ This query outputs the average sedentary minutes per day for a specific user ID,
 #### 2nd Query (Intensity Distribution):
 
 ```
+
 SELECT id,
        date,
        intensity,
@@ -69,6 +74,7 @@ FROM "fitness-data-kafka-database"."fitness_data_kafka_storage"
 WHERE intensity in (1,2,3)
 GROUP BY id,date,intensity
 ORDER BY id,date,intensity
+
 ```
 
 <img src="Sql Analytics\Query_2\Output.jpg">
@@ -80,6 +86,7 @@ Grouping the data by intensity (Light, Moderate, Very Active), this query delves
 #### 3rd Query (Sleep Analysis):
 
 ```
+
 SELECT id,
        date,
        sleep_value,
@@ -89,6 +96,7 @@ FROM "fitness-data-kafka-database"."fitness_data_kafka_storage"
 WHERE sleep_value != 0.0
 GROUP BY id,date,sleep_value
 ORDER BY id,date,sleep_value
+
 ```
 
 <img src="Sql Analytics\Query_3\Output.jpg">
