@@ -30,7 +30,26 @@ FROM "fitness-data-kafka-database"."fitness_data_kafka_storage" limit 10;
 The result provides a preview of the database table structure created using the Glue crawler on the S3 data. Displaying all columns and 10 rows, this query offers a comprehensive overview of the fitness device data, setting the stage for subsequent analyses.
 
 #### 1st Query (Average Sedentary Minutes):
-<img src="Sql Analytics\Query_1\Output.jpg">
+
+```
+WITH Intensity_per_minute AS (
+    Select id,
+           date,
+           count(time) as Total_Sedentary_minutes,
+           round(avg(heartrate),2) as Avg_heartrate
+    FROM "fitness-data-kafka-database"."fitness_data_kafka_storage"
+    WHERE id = 1503960366 AND intensity = 0 AND sleep_value = 0.0
+    GROUP BY id,date
+    ORDER BY id,date ASC)
+SELECT id,
+       count(date) as number_days,
+       round(Avg(Total_Sedentary_minutes),2) as Avg_Sedentary_minutes_day,
+       round(Avg(Avg_heartrate),2) as Avg_heartrate_minute_day
+FROM Intensity_per_minute
+GROUP BY id
+```
+
+<img src="Sql Analytics\Query_1\Output_cropped.jpg">
 
 #### Explaination:
 
