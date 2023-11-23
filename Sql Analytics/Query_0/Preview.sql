@@ -1,0 +1,1 @@
+SELECT * FROM "fitness-data-kafka-database"."fitness_data_kafka_storage" limit 10;
