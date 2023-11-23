@@ -23,10 +23,14 @@ FROM "fitness-data-kafka-database"."fitness_data_kafka_storage" limit 10;
 
 <img src="Sql Analytics\Query_0\Output.jpg">
 
+### Explaination:
+
 The result provides a preview of the database table structure created using the Glue crawler on the S3 data. Displaying all columns and 10 rows, this query offers a comprehensive overview of the fitness device data, setting the stage for subsequent analyses.
 
 #### 1st Query (Average Sedentary Minutes):
 <img src="Sql Analytics\Query_1\Output.jpg">
+
+### Explaination:
 
 This query outputs the average sedentary minutes per day for a specific user ID, indicating the number of days for which the average is computed. Additionally, it reveals the average heart rate during sedentary periods. This information provides insights into users' inactive time and associated heart rate patterns.
 
@@ -46,6 +50,8 @@ ORDER BY id,date,intensity
 
 <img src="Sql Analytics\Query_2\Output.jpg">
 
+### Explaination:
+
 Grouping the data by intensity (Light, Moderate, Very Active), this query delves into the statistical distribution of metrics for each intensity level. Notably, it highlights variations in heart rate, calorie burn, and steps across different intensities, offering a nuanced understanding of users' daily activity patterns.
 
 #### 3rd Query (Sleep Analysis):
@@ -61,6 +67,8 @@ GROUP BY id,date,sleep_value
 ORDER BY id,date,sleep_value
 
 <img src="Sql Analytics\Query_3\Output.jpg">
+
+### Explaination:
 
 The third query categorizes data by sleep_value (Not in bed, Asleep, Restless, Awake), allowing for a detailed study of sleep time in minutes and associated heart rates. The analysis reinforces the importance of maximizing time spent in sleep_value 1 (asleep) while minimizing durations in sleep_values 2 and 3 (restless and awake). Notably, the heart rate remains relatively consistent across all three sleep values.
 
