@@ -19,10 +19,8 @@ The data schema employed for fitness device information comprises ten key fields
 #### 0th Query (Table Preview):
 
 ```
-
 SELECT * 
 FROM "fitness-data-kafka-database"."fitness_data_kafka_storage" limit 10;
-
 ```
 
 <img src="Sql Analytics\Query_0\Output.jpg">
